@@ -18,4 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/api/categories', 'API\CategoryAPIController@index')->name('api.category.index');
+Route::get('categories', 'API\CategoryAPIController@index')->name('api.category.index');
+Route::post('categories', 'API\CategoryAPIController@store')->name('api.category.store');
+Route::put('categories/{category}/update', 'API\CategoryAPIController@update')->name('api.category.update');
+Route::delete('categories/{category}/delete', 'API\CategoryAPIController@delete')->name('api.category.delete');
+
+Route::get('post', 'API\PostAPIController@index')->name('api.post.index');
+Route::post('post', 'API\PostAPIController@store')->name('api.post.store');
+Route::put('post/{post}/update', 'API\PostAPIController@update')->name('api.post.update');
+Route::delete('post/{post}/delete', 'API\PostAPIController@delete')->name('api.post.delete');
+
+Route::post('/login', 'API\UserAPIController@login')->name('api.login');
